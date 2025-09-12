@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock-trader-api"
+version = "0.1.0"
+description = "Trading engine API, workers, and ingestion for news-driven signals."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Thomas Callen", email = "tcallen1001@gmail.com"}]
+dependencies = [
+    "fastapi>=0.112",
+    "uvicorn[standard]>=0.30",
+    "orjson>=3.10",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+    "httpx>=0.27",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.2",
+    "alembic>=1.13",
+    "redis>=5.0",
+    "tenacity>=9.0",
+]
+
+[project.optional-dependencies]
+nlp = [
+    "sentence-transformers>=3.0",
+    "scikit-learn>=1.4",
+    "transformers>=4.43",
+    "networkx>=3.3",
+]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "types-redis>=4.6.0.20240819",
+    "types-requests>=2.32.0.20240712",
+    "pre-commit>=3.7",
+]
+
+[project.scripts]
+engine-worker = "app.workers.worker:main"
+
+[tool.setuptools]
+package-dir = { "" = "." }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "N", "A", "B", "C4", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
+plugins = []

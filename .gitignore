@@ -1,0 +1,51 @@
+# -----------------------------------------------------
+# OS / Editors
+# -----------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.orig
+.idea/
+.vscode/
+*.code-workspace
+
+# -----------------------------------------------------
+# Environments & secrets (keep only templates)
+# -----------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.test.example
+*.pem
+*.key
+*.crt
+
+# -----------------------------------------------------
+# Python (apps/api, packages/*, etc.)
+# -----------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+.ipynb_checkpoints/
+.python-version
+.venv/
+**/.venv/
+**/venv/
+**/.env/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# -----------------------------------------------------
+# Node/React (apps/web, apps/admin, etc.)
+# (Lockfiles SHOULD be committed: package-lock.json / pnpm-lock.yaml / yarn.lock)
+# --------------------------------------------
