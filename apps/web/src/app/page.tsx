@@ -25,14 +25,14 @@ async function getJSON<T>(url: string, sort_key?: string, descending?: boolean):
 }
 
 export default async function Page() {
-  const [news, positions, account, orders] = await Promise.all([
-    getJSON<any>(`/api/news`, "published_at", true),
+  const [positions, account, orders] = await Promise.all([
+    // getJSON<any>(`/api/news`, "published_at", true),
     getJSON<any>(`/api/broker/positions`),
     getJSON<any>(`/api/broker/account`),
     getJSON<any>(`/api/broker/orders`),
   ]);
 
-  console.log(news, positions, account, orders);
+  console.log(positions, account, orders);
 
   return (
     <main className="mx-auto p-6 space-y-6">
@@ -45,9 +45,9 @@ export default async function Page() {
           <PositionsTable positions={positions} />
           <OrdersTable orders={orders} />
         </div>
-        <div className="md:col-span-1">
+        {/* <div className="md:col-span-1">
           <NewsList items={news} />
-        </div>
+        </div> */}
       </section>
     </main>
   )

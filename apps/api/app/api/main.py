@@ -12,7 +12,7 @@ logging.getLogger("startup").info(
     settings.app_env,
 )
 logging.getLogger("startup").info("DATABASE_URL=%r", settings.database_url)
-init_db()
+# init_db()
 
 app = FastAPI(title="Stock Trade Engine API", version="0.1.0")
 app.include_router(health.router, prefix="/api/health", tags=["health"])
